@@ -15,6 +15,13 @@ class WeatherModel {
     return jsonData;
   }
 
+  Future<dynamic> getCityWeather(String name) async {
+    var url = '$weatherAPI?q=$name&appid=$apiKey&units=metric';
+    NetworkHelper net = NetworkHelper(url);
+    var jsonData = await net.getData();
+    return jsonData;
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';
